@@ -1,0 +1,578 @@
+Collecting Django==5.1.4 (from -r requirements.txt (line 2))
+  Using cached Django-5.1.4-py3-none-any.whl.metadata (4.2 kB)
+Collecting wagtail==6.3.3 (from -r requirements.txt (line 3))
+  Using cached wagtail-6.3.3-py3-none-any.whl.metadata (3.7 kB)
+Collecting djangorestframework==3.15.2 (from -r requirements.txt (line 4))
+  Using cached djangorestframework-3.15.2-py3-none-any.whl.metadata (10 kB)
+Collecting django-cors-headers==4.6.0 (from -r requirements.txt (line 5))
+  Using cached django_cors_headers-4.6.0-py3-none-any.whl.metadata (16 kB)
+Collecting python-decouple==3.8 (from -r requirements.txt (line 11))
+  Using cached python_decouple-3.8-py3-none-any.whl.metadata (14 kB)
+Collecting Pillow==11.0.0 (from -r requirements.txt (line 14))
+  Using cached pillow-11.0.0.tar.gz (46.7 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting whitenoise==6.8.2 (from -r requirements.txt (line 17))
+  Using cached whitenoise-6.8.2-py3-none-any.whl.metadata (3.6 kB)
+Collecting gunicorn==23.0.0 (from -r requirements.txt (line 20))
+  Using cached gunicorn-23.0.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting wagtail-headless-preview==0.8.0 (from -r requirements.txt (line 23))
+  Using cached wagtail_headless_preview-0.8.0-py3-none-any.whl.metadata (11 kB)
+Collecting pytz==2024.2 (from -r requirements.txt (line 26))
+  Using cached pytz-2024.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting django-extensions==3.2.3 (from -r requirements.txt (line 29))
+  Using cached django_extensions-3.2.3-py3-none-any.whl.metadata (6.3 kB)
+Collecting asgiref<4,>=3.8.1 (from Django==5.1.4->-r requirements.txt (line 2))
+  Using cached asgiref-3.11.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.3.1 (from Django==5.1.4->-r requirements.txt (line 2))
+  Using cached sqlparse-0.5.5-py3-none-any.whl.metadata (4.7 kB)
+Collecting tzdata (from Django==5.1.4->-r requirements.txt (line 2))
+  Using cached tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting django-modelcluster<7.0,>=6.2.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached django_modelcluster-6.4.1-py2.py3-none-any.whl.metadata (6.4 kB)
+Collecting django-permissionedforms<1.0,>=0.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached django_permissionedforms-0.1-py2.py3-none-any.whl.metadata (6.0 kB)
+Collecting django-taggit<6.2,>=5.0 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached django_taggit-6.1.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting django-treebeard<5.0,>=4.5.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached django_treebeard-4.8.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting django-filter<25,>=23.3 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached django_filter-24.3-py3-none-any.whl.metadata (5.2 kB)
+Collecting draftjs-exporter<6.0,>=2.1.5 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached draftjs_exporter-5.2.0-py3-none-any.whl.metadata (16 kB)
+Collecting beautifulsoup4<4.13,>=4.8 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached beautifulsoup4-4.12.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting Willow<2,>=1.8.0 (from Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached willow-1.12.0-py3-none-any.whl.metadata (6.0 kB)
+Collecting requests<3.0,>=2.11.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting l18n>=2018.5 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached l18n-2021.3-py3-none-any.whl.metadata (7.3 kB)
+Collecting openpyxl<4.0,>=3.0.10 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting anyascii>=0.1.5 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached anyascii-0.3.3-py3-none-any.whl.metadata (1.6 kB)
+Collecting telepath<1,>=0.3.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached telepath-0.3.1-py38-none-any.whl.metadata (1.7 kB)
+Collecting laces<0.2,>=0.1 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached laces-0.1.2-py3-none-any.whl.metadata (33 kB)
+Collecting packaging (from gunicorn==23.0.0->-r requirements.txt (line 20))
+  Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting soupsieve>1.2 (from beautifulsoup4<4.13,>=4.8->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting et-xmlfile (from openpyxl<4.0,>=3.0.10->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3.0,>=2.11.1->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached charset_normalizer-3.4.6-cp314-cp314-win_amd64.whl.metadata (41 kB)
+Collecting idna<4,>=2.5 (from requests<3.0,>=2.11.1->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.26 (from requests<3.0,>=2.11.1->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2023.5.7 (from requests<3.0,>=2.11.1->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting filetype!=1.1.0,>=1.0.10 (from Willow<2,>=1.8.0->Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached filetype-1.2.0-py2.py3-none-any.whl.metadata (6.5 kB)
+Collecting defusedxml<1.0,>=0.7 (from Willow<2,>=1.8.0->Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting pillow-heif>=1.0.0 (from Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached pillow_heif-1.3.0-cp314-cp314-win_amd64.whl.metadata (9.6 kB)
+Collecting six (from l18n>=2018.5->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+INFO: pip is looking at multiple versions of pillow-heif to determine which version is compatible with other requirements. This could take a while.
+Collecting pillow-heif>=1.0.0 (from Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached pillow_heif-1.2.1-cp314-cp314-win_amd64.whl.metadata (9.6 kB)
+  Using cached pillow_heif-1.2.0-cp314-cp314-win_amd64.whl.metadata (9.8 kB)
+  Using cached pillow_heif-1.1.1-cp314-cp314-win_amd64.whl.metadata (9.8 kB)
+  Using cached pillow_heif-1.1.0-cp314-cp314-win_amd64.whl.metadata (9.8 kB)
+  Using cached pillow_heif-1.0.0.tar.gz (18.3 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting Willow[heif]<2,>=1.8.0 (from wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached willow-1.11.0-py3-none-any.whl.metadata (6.1 kB)
+INFO: pip is still looking at multiple versions of pillow-heif to determine which version is compatible with other requirements. This could take a while.
+Collecting pillow-heif>=0.13.0 (from Willow[heif]<2,>=1.8.0->wagtail==6.3.3->-r requirements.txt (line 3))
+  Using cached pillow_heif-0.22.0.tar.gz (18.6 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Using cached Django-5.1.4-py3-none-any.whl (8.3 MB)
+Using cached wagtail-6.3.3-py3-none-any.whl (9.1 MB)
+Using cached djangorestframework-3.15.2-py3-none-any.whl (1.1 MB)
+Using cached django_cors_headers-4.6.0-py3-none-any.whl (12 kB)
+Using cached python_decouple-3.8-py3-none-any.whl (9.9 kB)
+Using cached whitenoise-6.8.2-py3-none-any.whl (20 kB)
+Using cached gunicorn-23.0.0-py3-none-any.whl (85 kB)
+Using cached wagtail_headless_preview-0.8.0-py3-none-any.whl (12 kB)
+Using cached pytz-2024.2-py2.py3-none-any.whl (508 kB)
+Using cached django_extensions-3.2.3-py3-none-any.whl (229 kB)
+Using cached asgiref-3.11.1-py3-none-any.whl (24 kB)
+Using cached beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+Using cached django_filter-24.3-py3-none-any.whl (95 kB)
+Using cached django_modelcluster-6.4.1-py2.py3-none-any.whl (29 kB)
+Using cached django_permissionedforms-0.1-py2.py3-none-any.whl (5.7 kB)
+Using cached django_taggit-6.1.0-py3-none-any.whl (75 kB)
+Using cached django_treebeard-4.8.0-py3-none-any.whl (70 kB)
+Using cached draftjs_exporter-5.2.0-py3-none-any.whl (26 kB)
+Using cached laces-0.1.2-py3-none-any.whl (22 kB)
+Using cached openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Using cached requests-2.33.1-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.6-cp314-cp314-win_amd64.whl (154 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached telepath-0.3.1-py38-none-any.whl (10 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Using cached willow-1.11.0-py3-none-any.whl (119 kB)
+Using cached anyascii-0.3.3-py3-none-any.whl (345 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Using cached filetype-1.2.0-py2.py3-none-any.whl (19 kB)
+Using cached l18n-2021.3-py3-none-any.whl (51 kB)
+Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+Using cached sqlparse-0.5.5-py3-none-any.whl (46 kB)
+Using cached et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+Using cached packaging-26.0-py3-none-any.whl (74 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Building wheels for collected packages: Pillow, pillow-heif
+  Building wheel for Pillow (pyproject.toml): started
+  Building wheel for Pillow (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  Building wheel for Pillow (pyproject.toml) did not run successfully.
+  exit code: 1
+  
+  [284 lines of output]
+  C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\config\_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+  !!
+  
+          ********************************************************************************
+          Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+  
+          By 2027-Feb-18, you need to update your project and remove deprecated calls
+          or your builds will no longer be supported.
+  
+          See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+          ********************************************************************************
+  
+  !!
+    corresp(dist, value, root_dir)
+  C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\config\_apply_pyprojecttoml.py:61: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+  !!
+  
+          ********************************************************************************
+          Please consider removing the following classifiers in favor of a SPDX license expression:
+  
+          License :: OSI Approved :: CMU License (MIT-CMU)
+  
+          See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+          ********************************************************************************
+  
+  !!
+    dist._finalize_license_expression()
+  C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+  !!
+  
+          ********************************************************************************
+          Please consider removing the following classifiers in favor of a SPDX license expression:
+  
+          License :: OSI Approved :: CMU License (MIT-CMU)
+  
+          See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+          ********************************************************************************
+  
+  !!
+    self._finalize_license_expression()
+  running bdist_wheel
+  running build
+  running build_py
+  creating build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\BdfFontFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\BlpImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\BmpImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\BufrStubImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ContainerIO.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\CurImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\DcxImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\DdsImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\EpsImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ExifTags.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\features.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\FitsImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\FliImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\FontFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\FpxImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\FtexImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GbrImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GdImageFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GifImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GimpGradientFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GimpPaletteFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\GribStubImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\Hdf5StubImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\IcnsImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\IcoImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\Image.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageChops.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageCms.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageColor.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageDraw.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageDraw2.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageEnhance.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageFilter.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageFont.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageGrab.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageMath.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageMode.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageMorph.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageOps.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImagePalette.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImagePath.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageQt.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageSequence.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageShow.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageStat.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageTk.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageTransform.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImageWin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\ImtImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\IptcImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\Jpeg2KImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\JpegImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\JpegPresets.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\McIdasImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\MicImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\MpegImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\MpoImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\MspImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PaletteFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PalmImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PcdImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PcfFontFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PcxImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PdfImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PdfParser.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PixarImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PngImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PpmImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PsdImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\PSDraw.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\QoiImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\report.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\SgiImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\SpiderImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\SunImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\TarIO.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\TgaImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\TiffImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\TiffTags.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\WalImageFile.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\WebPImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\WmfImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\XbmImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\XpmImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\XVThumbImagePlugin.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_binary.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_deprecate.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_tkinter_finder.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_typing.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_util.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_version.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\__init__.py -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\__main__.py -> build\lib.win-amd64-cpython-314\PIL
+  running egg_info
+  writing src\pillow.egg-info\PKG-INFO
+  writing dependency_links to src\pillow.egg-info\dependency_links.txt
+  writing requirements to src\pillow.egg-info\requires.txt
+  writing top-level names to src\pillow.egg-info\top_level.txt
+  reading manifest file 'src\pillow.egg-info\SOURCES.txt'
+  reading manifest template 'MANIFEST.in'
+  warning: no files found matching '*.c'
+  warning: no files found matching '*.h'
+  warning: no files found matching '*.sh'
+  warning: no files found matching '*.txt'
+  warning: no files found matching '.flake8'
+  warning: no previously-included files found matching '.appveyor.yml'
+  warning: no previously-included files found matching '.clang-format'
+  warning: no previously-included files found matching '.coveragerc'
+  warning: no previously-included files found matching '.editorconfig'
+  warning: no previously-included files found matching '.readthedocs.yml'
+  warning: no previously-included files found matching 'codecov.yml'
+  warning: no previously-included files found matching 'renovate.json'
+  warning: no previously-included files matching '.git*' found anywhere in distribution
+  warning: no previously-included files matching '*.so' found anywhere in distribution
+  no previously-included directories found matching '.ci'
+  no previously-included directories found matching 'wheels'
+  adding license file 'LICENSE'
+  writing manifest file 'src\pillow.egg-info\SOURCES.txt'
+  copying src\PIL\_imaging.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_imagingcms.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_imagingft.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_imagingmath.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_imagingmorph.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_imagingtk.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\_webp.pyi -> build\lib.win-amd64-cpython-314\PIL
+  copying src\PIL\py.typed -> build\lib.win-amd64-cpython-314\PIL
+  running build_ext
+  
+  
+  The headers or library files could not be found for zlib,
+  a required dependency when compiling Pillow from source.
+  
+  Please see the install instructions at:
+     https://pillow.readthedocs.io/en/latest/installation/basic-installation.html
+  
+  Traceback (most recent call last):
+    File "<string>", line 1026, in <module>
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
+      return distutils.core.setup(**attrs)  # type: ignore[return-value]
+             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 186, in setup
+      return run_commands(dist)
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 202, in run_commands
+      dist.run_commands()
+      ~~~~~~~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1000, in run_commands
+      self.run_command(cmd)
+      ~~~~~~~~~~~~~~~~^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\command\bdist_wheel.py", line 370, in run
+      self.run_command("build")
+      ~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\cmd.py", line 341, in run_command
+      self.distribution.run_command(command)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\command\build.py", line 135, in run
+      self.run_command(cmd_name)
+      ~~~~~~~~~~~~~~~~^^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\cmd.py", line 341, in run_command
+      self.distribution.run_command(command)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\command\build_ext.py", line 97, in run
+      _build_ext.run(self)
+      ~~~~~~~~~~~~~~^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\_distutils\command\build_ext.py", line 367, in run
+      self.build_extensions()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+    File "<string>", line 845, in build_extensions
+  RequiredDependencyException: zlib
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+      main()
+      ~~~~^^
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+      json_out["return_val"] = hook(**hook_input["kwargs"])
+                               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 280, in build_wheel
+      return _build_backend().build_wheel(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+          wheel_directory, config_settings, metadata_directory
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      )
+      ^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-install-5vwqtxxo\pillow_b2b09050e8db4b1e8ed9d7bac38ebec6\_custom_build\backend.py", line 26, in build_wheel
+      return super().build_wheel(wheel_directory, config_settings, metadata_directory)
+             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\build_meta.py", line 441, in build_wheel
+      return _build(['bdist_wheel', '--dist-info-dir', str(metadata_directory)])
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\build_meta.py", line 429, in _build
+      return self._build_with_temp_dir(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~^
+          cmd,
+          ^^^^
+      ...<3 lines>...
+          self._arbitrary_args(config_settings),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      )
+      ^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\build_meta.py", line 410, in _build_with_temp_dir
+      self.run_setup()
+      ~~~~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-install-5vwqtxxo\pillow_b2b09050e8db4b1e8ed9d7bac38ebec6\_custom_build\backend.py", line 20, in run_setup
+      return super().run_setup(setup_script)
+             ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-6csm8gdp\overlay\Lib\site-packages\setuptools\build_meta.py", line 317, in run_setup
+      exec(code, locals())
+      ~~~~^^^^^^^^^^^^^^^^
+    File "<string>", line 1042, in <module>
+  RequiredDependencyException:
+  
+  The headers or library files could not be found for zlib,
+  a required dependency when compiling Pillow from source.
+  
+  Please see the install instructions at:
+     https://pillow.readthedocs.io/en/latest/installation/basic-installation.html
+  
+  
+  <string>:52: RuntimeWarning: Pillow 11.0.0 does not support Python 3.14 and does not provide prebuilt Windows binaries. We do not recommend building from source on Windows.
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for Pillow
+  Building wheel for pillow-heif (pyproject.toml): started
+  Building wheel for pillow-heif (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  Building wheel for pillow-heif (pyproject.toml) did not run successfully.
+  exit code: 1
+  
+  [115 lines of output]
+  C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+  !!
+  
+          ********************************************************************************
+          Please consider removing the following classifiers in favor of a SPDX license expression:
+  
+          License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+  
+          See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+          ********************************************************************************
+  
+  !!
+    self._finalize_license_expression()
+  running bdist_wheel
+  running build
+  running build_py
+  creating build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\as_plugin.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\AvifImagePlugin.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\constants.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\heif.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\HeifImagePlugin.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\misc.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\options.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\_deffered_error.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\_lib_info.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\_version.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  copying pillow_heif\__init__.py -> build\lib.win-amd64-cpython-314\pillow_heif
+  running build_ext
+  <string>:146: UserWarning: MSYS2_PREFIX environment variable is not set. Assuming MSYS2_PREFIX=C:\msys64\mingw64
+  Traceback (most recent call last):
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+      main()
+      ~~~~^^
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+      json_out["return_val"] = hook(**hook_input["kwargs"])
+                               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+    File "E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 280, in build_wheel
+      return _build_backend().build_wheel(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+          wheel_directory, config_settings, metadata_directory
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      )
+      ^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\build_meta.py", line 441, in build_wheel
+      return _build(['bdist_wheel', '--dist-info-dir', str(metadata_directory)])
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\build_meta.py", line 429, in _build
+      return self._build_with_temp_dir(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~^
+          cmd,
+          ^^^^
+      ...<3 lines>...
+          self._arbitrary_args(config_settings),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      )
+      ^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\build_meta.py", line 410, in _build_with_temp_dir
+      self.run_setup()
+      ~~~~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\build_meta.py", line 520, in run_setup
+      super().run_setup(setup_script=setup_script)
+      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\build_meta.py", line 317, in run_setup
+      exec(code, locals())
+      ~~~~^^^^^^^^^^^^^^^^
+    File "<string>", line 272, in <module>
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\__init__.py", line 117, in setup
+      return distutils.core.setup(**attrs)  # type: ignore[return-value]
+             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 186, in setup
+      return run_commands(dist)
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\core.py", line 202, in run_commands
+      dist.run_commands()
+      ~~~~~~~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1000, in run_commands
+      self.run_command(cmd)
+      ~~~~~~~~~~~~~~~~^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\command\bdist_wheel.py", line 370, in run
+      self.run_command("build")
+      ~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\cmd.py", line 341, in run_command
+      self.distribution.run_command(command)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\command\build.py", line 135, in run
+      self.run_command(cmd_name)
+      ~~~~~~~~~~~~~~~~^^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\cmd.py", line 341, in run_command
+      self.distribution.run_command(command)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\dist.py", line 1107, in run_command
+      super().run_command(command)
+      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\dist.py", line 1019, in run_command
+      cmd_obj.run()
+      ~~~~~~~~~~~^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\command\build_ext.py", line 97, in run
+      _build_ext.run(self)
+      ~~~~~~~~~~~~~~^^^^^^
+    File "C:\Users\Admin\AppData\Local\Temp\pip-build-env-ggqv1097\overlay\Lib\site-packages\setuptools\_distutils\command\build_ext.py", line 367, in run
+      self.build_extensions()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+    File "<string>", line 152, in build_extensions
+  ValueError: MSYS2 not found and `MSYS2_PREFIX` is not set or is invalid.
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pillow-heif
+Failed to build Pillow pillow-heif
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: E:\rezwoan-portfolio-phase0\rezwoan-portfolio-final\rezwoan-portfolio\backend\venv\Scripts\python.exe -m pip install --upgrade pip
+error: failed-wheel-build-for-install
+
+Failed to build installable wheels for some pyproject.toml based projects
+
+Pillow, pillow-heif
