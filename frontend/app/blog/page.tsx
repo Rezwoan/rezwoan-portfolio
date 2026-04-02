@@ -53,7 +53,7 @@ export default async function BlogPage() {
                   <div className="md:w-48 h-32 md:h-auto rounded-lg overflow-hidden bg-surface-raised shrink-0">
                     <Image
                       src={post.cover_image.url}
-                      alt={post.cover_image.alt_text || post.title}
+                      alt={post.cover_image.alt || post.title}
                       width={192}
                       height={128}
                       className="w-full h-full object-cover transition-transform duration-page group-hover:scale-[1.04]"

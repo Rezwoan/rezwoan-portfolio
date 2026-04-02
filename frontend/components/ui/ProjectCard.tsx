@@ -54,7 +54,7 @@ export default function ProjectCard({ project, index = 0, featured = false }: Pr
         <div className={cn("overflow-hidden bg-surface-raised", featured ? "h-64 md:h-80" : "h-48")}>
           <Image
             src={project.cover_image.url}
-            alt={project.cover_image.alt_text || project.title}
+            alt={project.cover_image.alt || project.title}
             width={project.cover_image.width}
             height={project.cover_image.height}
             className="w-full h-full object-cover transition-transform duration-page group-hover:scale-[1.03]"

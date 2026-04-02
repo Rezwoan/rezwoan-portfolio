@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <FadeUp delay={0.2} className="mb-10 rounded-xl overflow-hidden border border-border max-w-3xl">
             <Image
               src={p.cover_image.url}
-              alt={p.cover_image.alt_text || p.title}
+              alt={p.cover_image.alt || p.title}
               width={p.cover_image.width}
               height={p.cover_image.height}
               className="w-full object-cover"
