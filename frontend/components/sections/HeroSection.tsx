@@ -102,9 +102,9 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
       />
 
       <div className="container-site relative">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-start">
-          {/* Left — main content */}
-          <div className="max-w-2xl">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
+          {/* Left â€” main content */}
+          <div className="max-w-2xl w-full">
             {/* Availability badge */}
             {settings.available_for_work && (
               <motion.div
@@ -198,7 +198,7 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
 
           {/* Right — terminal card */}
           <motion.div
-            className="hidden lg:block w-80 shrink-0"
+            className="w-full max-w-[360px] mx-auto lg:mx-0 lg:w-80 shrink-0 mb-6 lg:mb-0"
             initial={shouldReduce ? false : { opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
