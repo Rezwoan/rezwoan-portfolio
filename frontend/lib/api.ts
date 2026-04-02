@@ -62,7 +62,7 @@ export interface SiteSettings {
   linkedin_url: string;
   twitter_url: string;
   fiverr_url: string;
-  resume_pdf: string | null;
+  resume_pdf_url: string | null;
   og_image: WagtailImage | null;
   google_analytics_id: string;
   meta_title_suffix: string;

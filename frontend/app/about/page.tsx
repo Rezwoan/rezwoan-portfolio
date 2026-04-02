@@ -72,16 +72,14 @@ export default async function AboutPage() {
                   Work with me
                 </Link>
               </MagneticButton>
-              {s?.resume_pdf_url && (
-                <a
-                  href={s.resume_pdf_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost"
-                >
-                  <Download size={15} /> Download résumé
-                </a>
-              )}
+              <a
+                href={s?.resume_pdf_url || "/Rezwoan_CV.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+              >
+                  <Download size={15} /> Download rÃ©sumÃ©
+              </a>
             </div>
           </FadeUp>
 
