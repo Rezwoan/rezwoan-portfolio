@@ -218,3 +218,26 @@
 **Blockers:**
 - `Project.tech_stack` data exists conceptually but currently returns empty arrays in API (model/relationship behavior to review separately).
 
+---
+
+## Session 7 — 2026-04-02 (Copilot)
+
+**Status:** Phase 5 complete ✅
+
+**What got done:**
+- Replaced all PostgreSQL requirements with SQLite for a zero-config production environment.
+- Upgraded the Next.js `page.tsx` dynamic route segments to correctly type `params` as a `Promise` (Next.js 15 breaking changes).
+- Fixed `WagtailImage` typing mismatches between Django API output and frontend Typescript checks.
+- Forced HTTPS protocol through the Nginx reverse proxy using `X-Forwarded-Proto https` to ensure Django's Strict CSRF validation passes Wagtail admin logins.
+- Tracked and pushed the seeded `db.sqlite3` file so the Pi doesn't require manual recreation of content.
+- Set up a fully isolated, backgrounded `actions-runner` on the Raspberry Pi for automatic CI/CD deployment on every main branch push.
+- Updated `urls.py` with a `RedirectView` to auto-route `manage.rezwoan.me` root to `/cms/`.
+
+**What's next (Post-launch):**
+- Monitor Pi 5 thermals/network under load.
+- Connect custom domain DNS for the frontend on Cloudflare.
+- Share the live URLs!
+
+**Blockers:**
+None. Project is fully deployed.
+
