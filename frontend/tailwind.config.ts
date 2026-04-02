@@ -42,9 +42,9 @@ const config: Config = {
         sans:    ["Satoshi", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "hero":       ["4.5rem",   { lineHeight: "1.05", fontWeight: "700" }],
-        "display":    ["3rem",     { lineHeight: "1.1",  fontWeight: "700" }],
-        "heading":    ["2rem",     { lineHeight: "1.2",  fontWeight: "600" }],
+          "hero":       ["clamp(2.75rem, 8vw, 4.5rem)",   { lineHeight: "1.05", fontWeight: "700" }],
+          "display":    ["clamp(2rem, 5vw, 3rem)",     { lineHeight: "1.1",  fontWeight: "700" }],
+          "heading":    ["clamp(1.5rem, 4vw, 2rem)",     { lineHeight: "1.2",  fontWeight: "600" }],
         "subheading": ["1.25rem",  { lineHeight: "1.3",  fontWeight: "600" }],
         "body":       ["1rem",     { lineHeight: "1.75", fontWeight: "400" }],
         "small":      ["0.875rem", { lineHeight: "1.6",  fontWeight: "400" }],
