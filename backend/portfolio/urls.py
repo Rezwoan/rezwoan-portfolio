@@ -9,6 +9,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import RedirectView
 
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -35,6 +36,7 @@ urlpatterns = [
     path("sitemap.xml", sitemap),
     path("robots.txt", robots_txt),
     path("feed/rss/", rss_feed),
+    path("", RedirectView.as_view(url="/cms/", permanent=False)),
     path("", include(wagtail_urls)),
 ]
 
