@@ -1,5 +1,5 @@
 """
-Production settings — used on the Pi with DEBUG=False.
+Production settings - used on the Pi with DEBUG=False.
 Run with: DJANGO_SETTINGS_MODULE=portfolio.settings.production
 """
 from .base import *  # noqa
@@ -13,17 +13,7 @@ ALLOWED_HOSTS = config(
     cast=lambda v: [s.strip() for s in v.split(",")],
 )
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME", default="portfolio_db"),
-        "USER": config("DB_USER", default="portfolio_user"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST", default="localhost"),
-        "PORT": config("DB_PORT", default="5432"),
-        "CONN_MAX_AGE": 60,
-    }
-}
+# DATABASES inherited from base.py (using sqlite3)
 
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
@@ -37,7 +27,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = "DENY"
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
-# HTTPS — Cloudflare handles TLS but we tell Django the request is secure
+# HTTPS - Cloudflare handles TLS but we tell Django the request is secure
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Email
