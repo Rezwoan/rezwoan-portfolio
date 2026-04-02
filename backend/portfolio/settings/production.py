@@ -21,6 +21,12 @@ CORS_ALLOWED_ORIGINS = config(
     cast=lambda v: [s.strip() for s in v.split(",")],
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="https://manage.rezwoan.me",
+    cast=lambda v: [s.strip() for s in v.split(",")],
+)
+
 # Security headers
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
