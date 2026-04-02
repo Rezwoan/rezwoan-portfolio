@@ -63,9 +63,16 @@ def robots_txt(request):
 def llms_txt(request):
     site_settings = _get_site_settings(request)
     
+    # Safe defaults if SiteSettings is not yet created in Wagtail Admin
+    full_name = getattr(site_settings, 'full_name', 'Din Muhammad Rezwoan')
+    bio = getattr(site_settings, 'bio_long', '') or getattr(site_settings, 'bio_short', 'Backend & Frontend Developer')
+    github_url = getattr(site_settings, 'github_url', 'https://github.com/Rezwoan')
+    linkedin_url = getattr(site_settings, 'linkedin_url', '')
+    email = getattr(site_settings, 'email', '')
+
     # Base Info
-    content = f"# {site_settings.full_name or 'Din Muhammad Rezwoan'} - Portfolio Context\n\n"
-    content += f"## Bio\n{site_settings.bio_long or site_settings.bio_short or 'Backend & Frontend Developer'}\n\n"
+    content = f"# {full_name} - Portfolio Context\n\n"
+    content += f"## Bio\n{bio}\n\n"
     
     # Skills
     skills = Skill.objects.all()
@@ -88,17 +95,18 @@ def llms_txt(request):
     if projects.exists():
         content += "## Notable Projects\n"
         for p in projects:
-            content += f"- {p.title}: {p.description_short}\n"
+            # Fixing field name to short_description
+            content += f"- {p.title}: {getattr(p, 'short_description', '')}\n"
         content += "\n"
         
     # Links
     content += "## Contact & Links\n"
-    if site_settings.github_url:
-        content += f"- GitHub: {site_settings.github_url}\n"
-    if site_settings.linkedin_url:
-        content += f"- LinkedIn: {site_settings.linkedin_url}\n"
-    if site_settings.email:
-        content += f"- Email: {site_settings.email}\n"
+    if github_url:
+        content += f"- GitHub: {github_url}\n"
+    if linkedin_url:
+        content += f"- LinkedIn: {linkedin_url}\n"
+    if email:
+        content += f"- Email: {email}\n"
 
     return HttpResponse(content, content_type="text/plain; charset=utf-8")
 
