@@ -102,22 +102,23 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
       />
 
       <div className="container-site relative">
-        <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
-          {/* Left â€” main content */}
-          <div className="max-w-2xl w-full">
-            {/* Availability badge */}
-            {settings.available_for_work && (
-              <motion.div
-                initial={shouldReduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mb-6"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-                Available for new projects
-              </motion.div>
-            )}
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto] lg:gap-x-16 items-start">
+          
+          {/* Availability badge */}
+          {settings.available_for_work && (
+            <motion.div
+              initial={shouldReduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="order-1 lg:col-start-1 lg:row-start-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mb-8 lg:mb-6 w-fit"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+              Available for new projects
+            </motion.div>
+          )}
 
+          {/* Left — main content starts here */}
+          <div className="order-3 lg:col-start-1 lg:row-start-2 max-w-2xl w-full">
             {/* Name */}
             <TextReveal
               text={settings.full_name}
@@ -198,7 +199,7 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
 
           {/* Right — terminal card */}
           <motion.div
-            className="w-full max-w-[360px] mx-auto lg:mx-0 lg:w-80 shrink-0 mb-6 lg:mb-0"
+            className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-3 w-full max-w-[360px] mx-auto lg:mx-0 lg:w-80 shrink-0 mb-10 lg:mb-0"
             initial={shouldReduce ? false : { opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
