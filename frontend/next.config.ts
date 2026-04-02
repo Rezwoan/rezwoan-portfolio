@@ -84,10 +84,6 @@ const nextConfig: NextConfig = {
         destination: `${API_BASE}/media/:path*`,
       },
       {
-        source: "/sitemap.xml",
-        destination: `${API_BASE}/sitemap.xml`,
-      },
-      {
         source: "/robots.txt",
         destination: `${API_BASE}/robots.txt`,
       },

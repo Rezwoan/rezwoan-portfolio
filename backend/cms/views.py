@@ -87,7 +87,12 @@ def llms_txt(request):
     if experiences.exists():
         content += "## Professional Experience\n"
         for exp in experiences:
-            content += f"- {exp.role} at {exp.company_name} ({exp.date_range})\n"
+            start = exp.start_date.strftime("%b %Y") if exp.start_date else ""
+            if exp.is_current or not exp.end_date:
+                dr = f"{start} - Present"
+            else:
+                dr = f"{start} - {exp.end_date.strftime('%b %Y')}"
+            content += f"- {exp.role} at {exp.company_name} ({dr})\n"
         content += "\n"
 
     # Projects
