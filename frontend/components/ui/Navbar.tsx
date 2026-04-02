@@ -42,18 +42,23 @@ export default function Navbar({ availableForWork = false }: { availableForWork?
         <div className="container-site">
           <nav className="flex items-center justify-between h-16" aria-label="Main navigation">
             {/* Wordmark */}
-            <Link
-              href="/"
-              className="font-display font-bold text-lg tracking-tight hover:text-accent transition-colors duration-micro"
-            >
-              <span className="text-accent">R</span>ezwoan
+            <div className="flex items-center">
+              <Link
+                href="/"
+                className="font-display font-bold text-lg tracking-tight hover:text-accent transition-colors duration-micro"
+              >
+                <span className="text-accent">R</span>ezwoan
+              </Link>
               {availableForWork && (
-                <span className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-success/10 text-success border border-success/20 align-middle">
+                <Link
+                  href="/contact"
+                  className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-success/10 text-success border border-success/20 align-middle hover:bg-success/20 transition-colors"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
                   Open
-                </span>
+                </Link>
               )}
-            </Link>
+            </div>
 
             {/* Desktop links */}
             <ul className="hidden md:flex items-center gap-1">

@@ -110,10 +110,16 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
               initial={shouldReduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="order-1 lg:col-start-1 lg:row-start-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mb-4 lg:mb-6 w-fit"
+              className="order-1 lg:col-start-1 lg:row-start-1 mb-4 lg:mb-6 w-fit"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-              Available for new projects
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 hover:bg-success/20 transition-colors"
+                aria-label="Available for new projects, click to contact"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+                Available for new projects
+              </Link>
             </motion.div>
           )}
 
