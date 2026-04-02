@@ -15,6 +15,7 @@ interface FadeUpProps {
   duration?: number;
   className?: string;
   once?: boolean; // Only animate once (default true)
+  animateOnLoad?: boolean;
 }
 
 export default function FadeUp({
@@ -23,14 +24,16 @@ export default function FadeUp({
   duration = 0.5,
   className,
   once = true,
+  animateOnLoad = false,
 }: FadeUpProps) {
   const shouldReduce = useReducedMotion();
 
   return (
     <motion.div
       initial={shouldReduce ? false : { opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-60px" }}
+      animate={animateOnLoad && !shouldReduce ? { opacity: 1, y: 0 } : undefined}
+      whileInView={!animateOnLoad && !shouldReduce ? { opacity: 1, y: 0 } : undefined}
+      viewport={{ once, margin: "0px" }}
       transition={{
         duration: shouldReduce ? 0 : duration,
         delay: shouldReduce ? 0 : delay,

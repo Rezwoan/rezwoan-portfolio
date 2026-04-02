@@ -24,7 +24,7 @@ export default function TextReveal({
   className,
   delay = 0,
   stagger = 0.04,
-  animateOnLoad = false,
+  animateOnLoad = true,
 }: TextRevealProps) {
   const shouldReduce = useReducedMotion();
   const words = text.split(" ");
