@@ -241,3 +241,29 @@
 **Blockers:**
 None. Project is fully deployed.
 
+---
+
+## Session 8 — 2026-04-02 (Copilot)
+
+**Status:** SEO & Mobile UX Polish complete ✅
+
+**What got done:**
+- Rewrote `frontend/app/sitemap.ts` as a native Next.js integration utilizing the dynamic Django API to replace Wagtail's default sitemap.xml (which was throwing empty URLs due to architectural headless separation).
+- Added an AI context endpoint (`/llms.txt`) to the backend and proxied it through `next.config.ts` so LLMs can read a markdown-formatted version of the site's resume/skills data natively.
+- Fixed a 500 Server Error occurring during Django ORM parsing on the `/llms.txt` route where `short_description` was misaligned.
+- Checked out a staging branch (`feature/mobile-hero-terminal`) to redesign the mobile Hero Section:
+  - Repositioned the Terminal module to slide visually between the "Available for Work" badge and the "Din Muhammad Rezwoan" text using Tailwind `order-*` rules and `lg:grid` swapping. 
+  - Reduced vertical gaps (`mb-10` -> `mb-4`, `gap-y` -> minimal padding).
+- Patched a Framer Motion `whileInView` hydration bug on Mobile:
+  - Changed `TextReveal` to default to `animateOnLoad={true}` so off-screen text doesn't permanently freeze at `opacity: 0`.
+  - Adjusted `FadeUp` margin triggers from `-60px` to `0px` to ensure reliable loading loops.
+- Improved UX by wrapping the "Open" nav badge and "Available for new projects" Hero badge inside `<Link>` components, creating direct funnels to the `/contact` page.
+- Wiped `.next` cache to clear React hydration mismatches on local development.
+- Merged feature branch into `main` and pushed to trigger Raspberry Pi automated deployment.
+
+**What's next:**
+- Monitor Google Search Console for the indexing map to flip from "Pending" to "Crawled".
+- Build strong backlinks using the Entity Graph strategy.
+
+**Blockers:** None. Codebase is completely stable, Next.js cache mismatches solved.
+
