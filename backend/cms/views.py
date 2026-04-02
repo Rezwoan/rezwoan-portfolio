@@ -54,7 +54,7 @@ def robots_txt(request):
         "Disallow: /django-admin/",
         "Disallow: /api/",
         "",
-        f"Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml",        
+        "Sitemap: https://rezwoan.me/sitemap.xml",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
