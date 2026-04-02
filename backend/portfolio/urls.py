@@ -20,7 +20,7 @@ from wagtail.documents.api.v2.views import DocumentsAPIViewSet
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
-from cms.views import robots_txt, rss_feed
+from cms.views import robots_txt, rss_feed, llms_txt
 
 api_router = WagtailAPIRouter("wagtailapi")
 api_router.register_endpoint("pages", PagesAPIViewSet)
@@ -35,6 +35,7 @@ urlpatterns = [
     path("api/", include("cms.urls")),
     path("sitemap.xml", sitemap),
     path("robots.txt", robots_txt),
+    path("llms.txt", llms_txt),
     path("feed/rss/", rss_feed),
     path("", RedirectView.as_view(url="/cms/", permanent=False)),
     path("", include(wagtail_urls)),

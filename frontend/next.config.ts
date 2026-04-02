@@ -92,6 +92,10 @@ const nextConfig: NextConfig = {
         destination: `${API_BASE}/robots.txt`,
       },
       {
+        source: "/llms.txt",
+        destination: `${API_BASE}/llms.txt`,
+      },
+      {
         source: "/feed/rss/",
         destination: `${API_BASE}/feed/rss/`,
       },

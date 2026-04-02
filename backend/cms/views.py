@@ -41,8 +41,8 @@ def _get_site_settings(request):
 
 
 # ---------------------------------------------------------------------------
-# robots.txt
-# ---------------------------------------------------------------------------
+# robots.txt & llms.txt
+# ---------------------------------------------------------------------------   
 
 @require_GET
 @cache_page(60 * 60 * 24)
@@ -54,10 +54,53 @@ def robots_txt(request):
         "Disallow: /django-admin/",
         "Disallow: /api/",
         "",
-        f"Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml",
+        f"Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml",        
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
+@require_GET
+@cache_page(60 * 60 * 24)
+def llms_txt(request):
+    site_settings = _get_site_settings(request)
+    
+    # Base Info
+    content = f"# {site_settings.full_name or 'Din Muhammad Rezwoan'} - Portfolio Context\n\n"
+    content += f"## Bio\n{site_settings.bio_long or site_settings.bio_short or 'Backend & Frontend Developer'}\n\n"
+    
+    # Skills
+    skills = Skill.objects.all()
+    if skills.exists():
+        content += "## Skills\n"
+        for s in skills:
+            content += f"- {s.name} ({s.category})\n"
+        content += "\n"
+
+    # Experiences
+    experiences = Experience.objects.all().order_by('-start_date')
+    if experiences.exists():
+        content += "## Professional Experience\n"
+        for exp in experiences:
+            content += f"- {exp.role} at {exp.company_name} ({exp.date_range})\n"
+        content += "\n"
+
+    # Projects
+    projects = Project.objects.filter(published=True)
+    if projects.exists():
+        content += "## Notable Projects\n"
+        for p in projects:
+            content += f"- {p.title}: {p.description_short}\n"
+        content += "\n"
+        
+    # Links
+    content += "## Contact & Links\n"
+    if site_settings.github_url:
+        content += f"- GitHub: {site_settings.github_url}\n"
+    if site_settings.linkedin_url:
+        content += f"- LinkedIn: {site_settings.linkedin_url}\n"
+    if site_settings.email:
+        content += f"- Email: {site_settings.email}\n"
+
+    return HttpResponse(content, content_type="text/plain; charset=utf-8")
 
 # ---------------------------------------------------------------------------
 # RSS Feed
