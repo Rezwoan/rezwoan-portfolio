@@ -119,7 +119,7 @@ export default function ContactForm() {
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="Din Muhammad Rezwoan"
+            placeholder="Your Awesome Name"
             autoComplete="name"
             className={inputClass("name")}
             disabled={formState === "loading"}
