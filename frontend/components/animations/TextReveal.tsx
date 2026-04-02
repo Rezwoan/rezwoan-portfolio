@@ -15,6 +15,7 @@ interface TextRevealProps {
   className?: string;
   delay?: number;
   stagger?: number;
+  animateOnLoad?: boolean;
 }
 
 export default function TextReveal({
@@ -23,6 +24,7 @@ export default function TextReveal({
   className,
   delay = 0,
   stagger = 0.04,
+  animateOnLoad = false,
 }: TextRevealProps) {
   const shouldReduce = useReducedMotion();
   const words = text.split(" ");
@@ -38,8 +40,9 @@ export default function TextReveal({
           <motion.span
             className="inline-block"
             initial={{ y: "110%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 1 }}
-            viewport={{ once: true, margin: "-40px" }}
+            animate={animateOnLoad ? { y: "0%", opacity: 1 } : undefined}
+            whileInView={!animateOnLoad ? { y: "0%", opacity: 1 } : undefined}
+            viewport={{ once: true, margin: animateOnLoad ? "0px" : "-40px" }}
             transition={{
               duration: 0.55,
               delay: delay + i * stagger,

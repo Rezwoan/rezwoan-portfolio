@@ -126,6 +126,7 @@ export default function HeroSection({ settings, heroSkills }: HeroSectionProps) 
               className="text-hero font-display leading-[1.02] mb-4"
               delay={0.1}
               stagger={0.06}
+              animateOnLoad={true}
             />
 
             {/* Tagline */}
