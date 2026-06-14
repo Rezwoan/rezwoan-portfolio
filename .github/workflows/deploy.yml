@@ -1,31 +1,20 @@
-name: Deploy to Pi
+name: Deploy to Raspberry Pi
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+# Never run two deploys at once; let an in-flight one finish.
+concurrency:
+  group: rezwoan-deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    name: Build & Deploy
+    # Targets the dedicated portfolio runner on the Pi (label set at registration).
+    runs-on: [self-hosted, rezwoan]
     steps:
-      - name: Pull latest code
-        run: |
-          cd /var/www/rezwoan-portfolio
-          git pull
-
-      - name: Deploy backend
-        run: |
-          cd /var/www/rezwoan-portfolio/backend
-          source venv/bin/activate
-          pip install -r requirements.txt
-          export DJANGO_SETTINGS_MODULE=portfolio.settings.production
-          python manage.py migrate --noinput
-          python manage.py collectstatic --noinput
-          sudo systemctl restart rezwoan-backend
-
-      - name: Deploy frontend
-        run: |
-          cd /var/www/rezwoan-portfolio/frontend
-          npm ci
-          npm run build
-          sudo systemctl restart rezwoan-frontend
+      - name: Deploy
+        run: bash /var/www/rezwoan-portfolio/scripts/deploy.sh

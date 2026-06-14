@@ -1,63 +1,86 @@
 # DESIGN_SYSTEM.md — Visual Language & Components
 
 > Source of truth for every visual decision. Values here must match
-> `frontend/tailwind.config.ts` and `globals.css`. Grounded in the 2026 research in
+> `frontend/tailwind.config.ts` + `globals.css`. Grounded in the 2026 research in
 > [`RESEARCH.md`](./RESEARCH.md). Supersedes the old `STYLE_GUIDE.md`.
 
 ---
 
 ## Design direction (the 30-second pitch)
 
-**"Confident dark, one electric accent, real motion, zero clutter."**
-A dark-mode-first portfolio (a 2026 default, not a toggle) treated as deliberate brand
-mood — deep neutral background, **off-white** text (never pure `#FFF`), and a single
-high-energy accent used sparingly as a neon micro-accent. Generous whitespace, kinetic
-headline typography, subtle texture/grain, and cinematic soft-glow gradients instead of
-harsh rainbow ones. Every section earns its place; the first viewport answers "who is
-this, what does he do, can I hire him" within ~3 seconds.
-
-A **light theme** is provided as a secondary mode (system-aware) but the brand is dark.
+**"Premium, dual-theme, one electric accent, real motion, zero clutter."**
+The site ships with **first-class light AND dark themes** (system-aware, user-toggleable,
+no flash) — some clients dislike dark mode, so neither theme is an afterthought. Deep
+neutral surfaces, **off-white / near-black** text (never pure `#FFF` / `#000`), and a
+single high-energy accent used sparingly. Generous whitespace, kinetic headline
+typography, subtle grain, cinematic soft-glow gradients (no harsh rainbows). Smooth,
+purposeful motion **everywhere** — page transitions, scroll reveals, hover micro-states —
+always GPU-composited and reduced-motion-aware. The first viewport answers "who is this,
+what does he do, can I hire him" in ~3 seconds.
 
 ---
 
-## Color system
+## Theming (first-class light + dark)
 
-Dark is the canonical theme. Tokens are CSS variables so a light theme can re-map them.
+- Implemented with **`next-themes`** (`attribute="class"`, `defaultTheme="system"`,
+  `enableSystem`, `disableTransitionOnChange` to avoid color flashes on toggle).
+- Tailwind `darkMode: 'class'`. All colors are **CSS variables** defined twice — under
+  `:root` (light) and `.dark` (dark) in `globals.css` — and referenced by semantic
+  Tailwind tokens (`bg`, `text`, `accent`, …). A component never hardcodes a hex; it uses
+  the token, so it's automatically correct in both themes.
+- A **theme toggle** lives in the navbar (sun/moon, animated) and in the admin. Respect
+  the stored choice; fall back to system.
+- **No FOUC:** `next-themes` injects the theme class before paint. Keep the accent and
+  bg tokens defined so the very first paint is themed.
 
-### Dark (default)
+---
+
+## Color system — brand "Iris" (electric indigo/violet)
+
+Chosen for: premium/modern tech feel, strong recall, and **safe contrast in BOTH themes**
+(the old lime failed on light backgrounds). The accent is one CSS var — swappable later.
+
+### Dark theme (`.dark`)
 | Token | Hex | Usage |
 |---|---|---|
-| `bg` | `#0A0A0B` | Page background (near-black, faint warm) |
-| `bg-elevated` | `#101012` | Cards, panels |
-| `bg-raised` | `#17171A` | Modals, popovers, raised cards |
-| `border` | `#26262B` | Card borders, dividers |
-| `border-muted` | `#1C1C20` | Very subtle separators |
-| `text` | `#ECECE6` | Headings / primary (off-white — research: avoid `#FFF`) |
-| `text-secondary` | `#A6A6A0` | Body paragraphs |
-| `text-muted` | `#6C6C68` | Labels, captions, timestamps |
-| `text-inverse` | `#0A0A0B` | Text on the accent |
+| `--bg` | `#0B0B0F` | Page background (near-black, faint cool) |
+| `--bg-elevated` | `#131318` | Cards, panels |
+| `--bg-raised` | `#1B1B22` | Modals, popovers |
+| `--border` | `#272730` | Borders, dividers |
+| `--border-muted` | `#1E1E25` | Subtle separators |
+| `--text` | `#ECECEF` | Headings/primary (off-white, not `#FFF`) |
+| `--text-secondary` | `#A2A2AE` | Body |
+| `--text-muted` | `#6C6C7A` | Captions, labels |
+| `--accent` | `#7C6CFF` | CTAs, highlights, focus, active |
+| `--accent-hover` | `#8E80FF` | Hover |
+| `--accent-contrast` | `#0B0B0F` | Text on the accent |
+| `--accent-soft` | `rgba(124,108,255,0.14)` | Tints, glow |
+| `--accent-2` | `#22D3EE` | Secondary glow (cyan), used sparingly in gradients |
 
-### Accent (signature)
+### Light theme (`:root`)
 | Token | Hex | Usage |
 |---|---|---|
-| `accent` | `#C8F04B` | Primary CTAs, highlights, active states, focus rings |
-| `accent-hover` | `#D6F76A` | Hover |
-| `accent-soft` | `rgba(200,240,75,0.12)` | Tinted backgrounds, glow |
+| `--bg` | `#FBFBFD` | Page background (soft off-white) |
+| `--bg-elevated` | `#FFFFFF` | Cards, panels |
+| `--bg-raised` | `#FFFFFF` | Modals (with shadow) |
+| `--border` | `#E7E7EE` | Borders, dividers |
+| `--border-muted` | `#F0F0F4` | Subtle separators |
+| `--text` | `#15151A` | Headings/primary (near-black, not `#000`) |
+| `--text-secondary` | `#52525E` | Body |
+| `--text-muted` | `#8A8A96` | Captions, labels |
+| `--accent` | `#5B4FE0` | CTAs (deeper violet for contrast on white) |
+| `--accent-hover` | `#4C40D6` | Hover |
+| `--accent-contrast` | `#FFFFFF` | Text on the accent |
+| `--accent-soft` | `rgba(91,79,224,0.10)` | Tints, glow |
+| `--accent-2` | `#0EA5C4` | Secondary glow (deeper cyan) |
 
-> The lime/chartreuse from the old site is **kept as the signature** — it's distinctive,
-> reads as "neon micro-accent" (on-trend), and pops on near-black. It is the one color
-> a visitor will remember. **Alternative palettes** (swap only `accent*`): Electric
-> Indigo `#7C6CFF`, Aqua Teal `#3CE0C8`, Honeyed Gold `#F0B33C`. The accent is a single
-> CSS var — changing the brand color later is a one-line edit. (Ask the user before
-> changing the signature.)
-
-### Semantic
-`info #5B8CFF` · `success #34D399` · `warning #FBBF24` · `error #F87171`
-(slightly desaturated for dark mode per research — no full-saturation reds.)
+### Semantic (both themes, theme-tuned values)
+`info #5B8CFF` · `success #2FB873` · `warning #E0962A` · `error #E25555`
+(slightly desaturated; lighten ~10% in dark for legibility per research.)
 
 ### Gradients / glow
-Cinematic, low-contrast: radial `accent-soft` glow behind the hero name; a faint
-top-down `bg → bg-elevated` wash on sections. No multi-hue rainbow gradients.
+Cinematic, low-contrast: a radial `accent-soft → transparent` glow behind the hero name;
+an optional `accent → accent-2` mesh on feature cards. No multi-hue rainbow gradients.
 
 ---
 
@@ -65,107 +88,87 @@ top-down `bg → bg-elevated` wash on sections. No multi-hue rainbow gradients.
 
 | Role | Family | Source | Notes |
 |---|---|---|---|
-| Display / headings | **Clash Display** or Cabinet Grotesk | fontshare.com (free) | Bold, characterful; used for the kinetic hero |
-| Body / UI | **Satoshi** or Inter | fontshare.com / Google (free) | High legibility |
-| Mono / code | **JetBrains Mono** | Google (free) | Code blocks, the hero "terminal" accent |
+| Display / headings | **Clash Display** (or Cabinet Grotesk) | fontshare (free) | Kinetic hero |
+| Body / UI | **Satoshi** (or Inter) | fontshare / Google | Legibility |
+| Mono / code | **JetBrains Mono** | Google | Code blocks, hero terminal flourish |
 
-Self-host in `frontend/public/fonts/` via `next/font/local` (no layout shift, no extra
-network). Preload the display weight used in the hero.
+Self-host via `next/font/local` in `frontend/src/app` (no layout shift, no extra request).
+Preload the display weight used above the fold.
 
-### Type scale (fluid — clamp, learned from the old site's overflow bug)
-Use `clamp()` so headings never overflow on small screens.
+### Type scale (fluid `clamp()` — prevents the old responsive-overflow bug)
 | Token | clamp() | Use |
 |---|---|---|
 | `display-xl` | `clamp(2.5rem, 6vw, 4.5rem)` | Hero name |
 | `display` | `clamp(2rem, 4.5vw, 3rem)` | Section headings |
-| `heading` | `clamp(1.4rem, 3vw, 2rem)` | Card titles, sub-headings |
+| `heading` | `clamp(1.4rem, 3vw, 2rem)` | Card titles |
 | `subheading` | `1.25rem` | Feature/labels |
-| `body` | `1rem` (min 16px) | Paragraphs, line-height 1.7 |
+| `body` | `1rem` (≥16px) | Paragraphs, line-height 1.7 |
 | `small` | `0.875rem` | Tags, secondary |
-| `xs` | `0.75rem` | Captions (the floor — never smaller) |
+| `xs` | `0.75rem` | Captions (floor — never smaller) |
 
 ---
 
 ## Spacing, radius, layout
-
-- **Spacing:** 4px base; use multiples (4/8/12/16/24/32/48/64/80/96). Section vertical
-  rhythm: `clamp(4rem, 10vw, 8rem)`.
+- **Spacing:** 4px base; multiples (4/8/12/16/24/32/48/64/80/96). Section rhythm
+  `clamp(4rem, 10vw, 8rem)`.
 - **Container:** max-width `1200px`, side padding `clamp(1rem, 5vw, 2rem)`.
-- **Radius:** `sm 6px` chips · `md 10px` buttons/inputs · `lg 14px` cards ·
-  `xl 20px` feature cards · `full` pills/avatars.
-- **Grid:** mobile-first. Bento grid for skills/stats (named `grid-template-areas`).
-- **No horizontal scroll, ever.** No `100vw` without `overflow-x: clip`. Test at 320px.
+- **Radius:** `sm 6` · `md 10` · `lg 14` · `xl 20` · `full`.
+- **Bento grid** for skills/stats (named `grid-template-areas`).
+- **No horizontal scroll ever.** No `100vw` without `overflow-x: clip`. Test at 320px.
 
 ---
 
-## Motion (Framer Motion)
+## Motion — smooth animation everywhere (Framer Motion)
 
-| Type | Duration | Easing |
+Motion is a feature here, applied consistently but never gratuitously.
+
+| Where | Animation | Spec |
 |---|---|---|
-| Micro (hover) | 150ms | ease-out |
-| UI transition | 250ms | ease-out |
-| Scroll reveal | 400ms | cubic-bezier(0.16,1,0.3,1) |
-| Page transition | 500ms | ease-in-out |
-| Hero sequence | ≤800ms | cubic-bezier(0.16,1,0.3,1) |
+| Route change | Fade/slide page transition | `AnimatePresence`, 350–500ms ease-in-out |
+| Section entry | Scroll reveal `FadeUp` + stagger | 400ms cubic-bezier(0.16,1,0.3,1), `whileInView once` |
+| Hero headline | Word-by-word `TextReveal` | 40ms stagger, ≤800ms total |
+| Cards | Hover lift + border/glow | `translateY(-4px)`, 150–200ms ease-out |
+| Buttons/links | Magnetic + color micro | ≤8px pull, 150ms |
+| Lists/grids | Staggered children | `staggerChildren: 0.06–0.08` |
+| Numbers/stats | Count-up on view | 800ms |
+| Theme toggle | Icon morph | 250ms |
+| Nav | Blur-in on scroll, active underline `layoutId` | 200–250ms |
+| Chat widget | Spring expand/collapse | spring, soft |
 
-Rules:
-- **Hard cap 800ms.** Anything slower feels broken.
-- GPU-only props: animate `transform` + `opacity`. Never `width/height/top/left`.
-- **Every** animated component honors `useReducedMotion()` → instant show fallback.
-- Scroll reveals use `whileInView` with `viewport={{ once: true, margin: '-10%' }}`.
-  (The old site had a bug where off-screen text froze at `opacity:0` — default to
-  visible and reveal, never hide-until-seen for above-the-fold content.)
-- **Kinetic headline** (on-trend): hero name reveals word-by-word with a 40ms stagger.
-
-### Presets to build in `components/animations/`
-`FadeUp` (`y:24→0, opacity`), `StaggerChildren` (`staggerChildren:0.08`),
-`ScaleIn` (`scale:0.96→1`), `TextReveal` (word stagger).
+**Rules (hard):**
+- Cap 800ms. GPU-only props (`transform`, `opacity`) — never `width/height/top/left`.
+- **Every** animated component calls `useReducedMotion()` → instant fallback.
+- Above-the-fold content defaults to visible then reveals (never hide-until-seen).
+- Presets in `components/animations/`: `FadeUp`, `StaggerChildren`, `ScaleIn`,
+  `TextReveal`, `PageTransition`, `CountUp`, `Magnetic`.
 
 ---
 
-## Signature interactions (desktop / non-touch only)
-- **Custom cursor:** 8px accent dot (precise) + 36px hollow ring (lerp lag); ring
-  expands on hover of links/cards. Render only when `pointer: fine`.
-- **Magnetic buttons:** primary CTAs/social links drift ≤8px toward the cursor.
-- **Card hover:** `translateY(-4px)` + border brightens to accent-soft + faint glow.
-- **AI chat:** floating pill button bottom-right → expands to a grounded chat panel.
+## Signature interactions (non-touch / `pointer: fine` only)
+- **Custom cursor:** accent dot + lagging hollow ring; expands on hover of links/cards.
+- **Magnetic** primary CTAs + social icons.
+- **Card hover:** lift + border→accent-soft + faint glow.
+- **AI chat:** floating accent pill bottom-right → spring-expands to a grounded chat panel.
 
 ---
 
 ## Page / section inventory
-
-**Homepage** (order matters — best work + value prop above the fold):
-1. **Hero** — name (kinetic), role line, one-sentence value prop, availability badge
-   (links to /contact), primary CTA ("Start a project") + secondary ("View work"),
-   subtle mono "terminal" flourish, hero tech ticker.
-2. **Featured projects** — 3 best, big cards, live + code links, tech badges.
-3. **Skills** — bento grid by category, proficiency, with context ("React · 2y daily").
-4. **Experience** — condensed timeline.
-5. **Testimonials** — social proof front-and-center (research: top converter).
-6. **Contact CTA** — bold, single clear action; email visible, not hidden.
-
-**Routes:** `/` · `/projects` · `/projects/[slug]` (case study) · `/about` ·
-`/blog` · `/blog/[slug]` · `/contact` · `not-found` · `/admin/*`.
-
-**Case study template** (research: case studies separate juniors from hires):
-Problem → Approach → Stack → What I built → Outcome/links. Markdown body + a metadata
-header card (role, year, stack, live/code).
+**Homepage** (best work + value prop above the fold): Hero (kinetic name, role, value prop,
+availability badge→/contact, primary+secondary CTA, tech ticker) → Featured Projects (3) →
+Skills (bento, with context) → Experience (timeline) → Testimonials (social proof) →
+Contact CTA (email visible).
+**Routes:** `/` · `/projects` · `/projects/[slug]` · `/about` · `/blog` · `/blog/[slug]` ·
+`/contact` · `not-found` · `/admin/*`.
+**Case study template:** Problem → Approach → Stack → What I built → Outcome/links.
 
 ---
 
 ## Accessibility (non-negotiable)
-- Contrast ≥ 4.5:1 for body text (off-white on near-black passes; check accent-on-bg
-  for text — use accent for large/bold or non-text only).
-- Visible focus rings (accent), full keyboard nav, semantic landmarks, `alt` on every
-  image, labelled form fields, `prefers-reduced-motion` respected.
-- Lighthouse Accessibility ≥ 95 (see [`SEO_STRATEGY.md`](./SEO_STRATEGY.md)).
-
----
+Contrast ≥4.5:1 body text (both themes verified), visible accent focus rings, full keyboard
+nav, semantic landmarks, `alt` on every image, labelled fields, reduced-motion respected,
+Lighthouse Accessibility ≥95.
 
 ## What NOT to do
-- No generic "I am a developer" H1 — lead with a specific value proposition.
-- No project carousel (bad mobile, hurts LCP) — use a grid.
-- No skeleton flashes on every visit — ISR pre-bakes content.
-- No scroll-jacking. No emojis as structural icons (use Lucide SVGs).
-- No pure-white text, no full-saturation reds on dark (research).
-- No static `px` font sizes that overflow — use the fluid `clamp` scale.
+No generic "I am a developer" H1 · no project carousel · no skeleton flash (ISR) · no
+scroll-jacking · no emojis as structural icons · no pure `#FFF`/`#000` text · no
+full-saturation reds on dark · no static `px` font sizes that overflow.

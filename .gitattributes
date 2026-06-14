@@ -1,0 +1,19 @@
+# Normalize line endings. Linux Pi must get LF — CRLF breaks bash scripts.
+* text=auto eol=lf
+*.sh text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+# Windows-only helpers stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+# Binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary

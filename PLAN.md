@@ -142,6 +142,13 @@ rezwoan-portfolio/
    with a markdown renderer + syntax highlighting. (Replaces Wagtail StreamField.)
 8. **Images** are uploaded to `backend/uploads/`, served by nginx at `/uploads/`,
    referenced by path in the DB. `next/image` is configured for the rezwoan.me host.
+9. **Dual theme is first-class.** Light + dark, system-aware + user-toggle via
+   `next-themes`, all colors as CSS variables (no hardcoded hex in components). Brand
+   accent = electric indigo/violet (one CSS var, swappable). See `docs/DESIGN_SYSTEM.md`.
+10. **Smooth animation everywhere** (Framer Motion): page transitions, scroll reveals,
+    hover micro-states, kinetic hero — all GPU-composited and `useReducedMotion`-aware.
+11. **Keys:** the provided Resend/Gemini keys are used as-is on the Pi `.env` for now
+    (owner rotates later). Still never committed — placeholders only in tracked files.
 
 ---
 
