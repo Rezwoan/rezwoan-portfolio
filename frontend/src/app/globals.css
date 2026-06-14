@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme tokens (RGB channels so Tailwind alpha modifiers work) ───────── */
+:root {
+  /* Light theme */
+  --bg: 251 251 253;
+  --bg-elevated: 255 255 255;
+  --bg-raised: 255 255 255;
+  --border: 231 231 238;
+  --border-muted: 240 240 244;
+  --text: 21 21 26;
+  --text-secondary: 82 82 94;
+  --text-muted: 138 138 150;
+  --accent: 91 79 224;
+  --accent-hover: 76 64 214;
+  --accent-contrast: 255 255 255;
+  --accent-2: 14 165 196;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 11 15;
+  --bg-elevated: 19 19 24;
+  --bg-raised: 27 27 34;
+  --border: 39 39 48;
+  --border-muted: 30 30 37;
+  --text: 236 236 239;
+  --text-secondary: 162 162 174;
+  --text-muted: 108 108 122;
+  --accent: 124 108 255;
+  --accent-hover: 142 128 255;
+  --accent-contrast: 11 11 15;
+  --accent-2: 34 211 238;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold text-text;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+  /* Accent focus ring for keyboard users */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+  /* Custom thin scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--border)); border-radius: 9999px; }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-container px-[clamp(1rem,5vw,2rem)];
+  }
+  .section {
+    @apply py-[clamp(4rem,10vw,8rem)];
+  }
+  .card {
+    @apply rounded-lg border border-border bg-bg-elevated transition-colors duration-200;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-all duration-150 disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-accent-contrast hover:bg-accent-hover hover:shadow-glow;
+  }
+  .btn-secondary {
+    @apply btn border border-border bg-bg-elevated text-text hover:border-accent/50;
+  }
+  .btn-ghost {
+    @apply btn text-text-secondary hover:bg-bg-elevated hover:text-text;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-border bg-bg-elevated px-2.5 py-1 text-xs font-medium text-text-secondary;
+  }
+  .link-underline {
+    @apply relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:after:w-full;
+  }
+}
+
+/* Markdown / prose rendering for case studies + blog */
+.prose-content {
+  @apply text-text-secondary leading-7;
+}
+.prose-content h2 { @apply mt-10 mb-4 text-heading text-text; }
+.prose-content h3 { @apply mt-8 mb-3 text-subheading font-semibold text-text; }
+.prose-content p { @apply my-4; }
+.prose-content a { @apply text-accent underline underline-offset-2 hover:text-accent-hover; }
+.prose-content ul { @apply my-4 list-disc space-y-1.5 pl-6; }
+.prose-content ol { @apply my-4 list-decimal space-y-1.5 pl-6; }
+.prose-content code { @apply rounded bg-bg-elevated px-1.5 py-0.5 font-mono text-[0.85em] text-text; }
+.prose-content pre { @apply my-6 overflow-x-auto rounded-lg border border-border bg-bg-elevated p-4 text-sm; }
+.prose-content pre code { @apply bg-transparent p-0; }
+.prose-content blockquote { @apply my-6 border-l-2 border-accent pl-4 italic text-text; }
+.prose-content img { @apply my-6 rounded-lg border border-border; }
+
+/* highlight.js base (theme-agnostic, accent-tinted) */
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in { color: rgb(var(--accent)); }
+.hljs-string, .hljs-attr { color: rgb(var(--accent-2)); }
+.hljs-comment { @apply text-text-muted italic; }
+.hljs-number, .hljs-literal { color: #E0962A; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
