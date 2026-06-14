@@ -1,0 +1,170 @@
+// rezwoan.me portfolio — Prisma schema (SQLite).
+// See docs/DATA_MODEL.md. `prisma generate` runs per-environment (Windows dev / ARM Pi),
+// so native engine detection is sufficient. If the Pi engine ever needs pinning, add
+// binaryTargets = ["native", "linux-arm64-openssl-3.0.x"] and redeploy.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id                String   @id @default("singleton")
+  fullName          String   @default("Din Muhammad Rezwoan")
+  shortName         String   @default("Rezwoan")
+  tagline           String   @default("")
+  roleLine          String   @default("Full Stack Developer")
+  bioShort          String   @default("")
+  bioLong           String   @default("")
+  location          String   @default("Dhaka, Bangladesh")
+  availableForWork  Boolean  @default(true)
+  email             String   @default("frezwoan@gmail.com")
+  githubUrl         String   @default("https://github.com/Rezwoan")
+  linkedinUrl       String   @default("")
+  twitterUrl        String   @default("")
+  fiverrUrl         String   @default("")
+  resumeUrl         String   @default("")
+  ogImageUrl        String   @default("")
+  faviconUrl        String   @default("")
+  metaTitleSuffix   String   @default(" — Rezwoan")
+  googleAnalyticsId String   @default("")
+  updatedAt         DateTime @updatedAt
+}
+
+model Tag {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  slug        String       @unique
+  color       String       @default("#7C6CFF")
+  iconName    String?
+  projects    Project[]    @relation("ProjectTags")
+  experiences Experience[] @relation("ExperienceTags")
+  createdAt   DateTime     @default(now())
+}
+
+model Project {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  shortDescription String   @default("")
+  body             String   @default("")
+  coverImageUrl    String   @default("")
+  liveUrl          String   @default("")
+  githubUrl        String   @default("")
+  category         String   @default("web")
+  featured         Boolean  @default(false)
+  published        Boolean  @default(false)
+  order            Int      @default(0)
+  repoStars        Int?
+  repoForks        Int?
+  repoLanguage     String?
+  importedFrom     String?
+  seoTitle         String   @default("")
+  seoDescription   String   @default("")
+  seoOgImageUrl    String   @default("")
+  tags             Tag[]    @relation("ProjectTags")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([published, featured, order])
+}
+
+model Experience {
+  id             String    @id @default(cuid())
+  company        String
+  role           String
+  employmentType String    @default("freelance")
+  companyUrl     String    @default("")
+  companyLogoUrl String    @default("")
+  location       String    @default("")
+  startDate      DateTime
+  endDate        DateTime?
+  isCurrent      Boolean   @default(false)
+  description    String    @default("")
+  order          Int       @default(0)
+  tags           Tag[]     @relation("ExperienceTags")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String
+  category    String   @default("frontend")
+  proficiency Int      @default(3)
+  iconName    String   @default("")
+  context     String   @default("")
+  order       Int      @default(0)
+  showOnHero  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id             String    @id @default(cuid())
+  title          String
+  slug           String    @unique
+  excerpt        String    @default("")
+  body           String    @default("")
+  coverImageUrl  String    @default("")
+  tags           String    @default("[]")
+  readingTime    Int       @default(0)
+  published      Boolean   @default(false)
+  publishedAt    DateTime?
+  seoTitle       String    @default("")
+  seoDescription String    @default("")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([published, publishedAt])
+}
+
+model Testimonial {
+  id            String   @id @default(cuid())
+  clientName    String
+  clientTitle   String   @default("")
+  clientCompany String   @default("")
+  avatarUrl     String   @default("")
+  quote         String
+  rating        Int      @default(5)
+  source        String   @default("fiverr")
+  sourceUrl     String   @default("")
+  featured      Boolean  @default(false)
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String   @default("")
+  message   String
+  read      Boolean  @default(false)
+  ipAddress String   @default("")
+  createdAt DateTime @default(now())
+
+  @@index([read, createdAt])
+}
+
+model ChatLog {
+  id        String   @id @default(cuid())
+  sessionId String
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+
+  @@index([sessionId, createdAt])
+}

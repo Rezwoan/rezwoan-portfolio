@@ -1,112 +1,63 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+
+const withVar = (v: string) => `rgb(var(${v}) / <alpha-value>)`;
 
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  darkMode: 'class',
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      // ── Colors ──────────────────────────────────────────────
       colors: {
-        background:    "#080808",
-        surface:       "#111111",
-        "surface-raised": "#1A1A1A",
-        border:        "#242424",
-        "border-muted":"#1C1C1C",
-
-        // Text
-        "text-primary":   "#F5F5F0",
-        "text-secondary": "#A0A09A",
-        "text-muted":     "#666660",
-        "text-inverse":   "#080808",
-
-        // Brand accent
-        accent:        "#C8F04B",
-        "accent-hover":"#B8E040",
-        "accent-muted":"rgba(200, 240, 75, 0.10)",
-
-        // Semantic
-        info:    "#3B82F6",
-        success: "#22C55E",
-        warning: "#F59E0B",
-        error:   "#EF4444",
+        bg: withVar('--bg'),
+        'bg-elevated': withVar('--bg-elevated'),
+        'bg-raised': withVar('--bg-raised'),
+        border: withVar('--border'),
+        'border-muted': withVar('--border-muted'),
+        text: withVar('--text'),
+        'text-secondary': withVar('--text-secondary'),
+        'text-muted': withVar('--text-muted'),
+        accent: withVar('--accent'),
+        'accent-hover': withVar('--accent-hover'),
+        'accent-contrast': withVar('--accent-contrast'),
+        'accent-2': withVar('--accent-2'),
+        info: '#5B8CFF',
+        success: '#2FB873',
+        warning: '#E0962A',
+        error: '#E25555',
       },
-
-      // ── Typography ──────────────────────────────────────────
       fontFamily: {
-        display: ["Cabinet Grotesk", "system-ui", "sans-serif"],
-        body:    ["Satoshi", "system-ui", "sans-serif"],
-        mono:    ["JetBrains Mono", "Menlo", "monospace"],
-        sans:    ["Satoshi", "system-ui", "sans-serif"],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-          "hero":       ["clamp(2.75rem, 8vw, 4.5rem)",   { lineHeight: "1.05", fontWeight: "700" }],
-          "display":    ["clamp(2rem, 5vw, 3rem)",     { lineHeight: "1.1",  fontWeight: "700" }],
-          "heading":    ["clamp(1.5rem, 4vw, 2rem)",     { lineHeight: "1.2",  fontWeight: "600" }],
-        "subheading": ["1.25rem",  { lineHeight: "1.3",  fontWeight: "600" }],
-        "body":       ["1rem",     { lineHeight: "1.75", fontWeight: "400" }],
-        "small":      ["0.875rem", { lineHeight: "1.6",  fontWeight: "400" }],
-        "xs":         ["0.75rem",  { lineHeight: "1.5",  fontWeight: "400" }],
+        'display-xl': ['clamp(2.5rem, 6vw, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        display: ['clamp(2rem, 4.5vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        heading: ['clamp(1.4rem, 3vw, 2rem)', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        subheading: ['1.25rem', { lineHeight: '1.3' }],
       },
-
-      // ── Spacing ─────────────────────────────────────────────
-      // Using default Tailwind scale (4px base) — no overrides needed
-      // Only add custom spacing here if the default scale doesn't cover it
-
-      // ── Border Radius ───────────────────────────────────────
       borderRadius: {
-        sm:   "4px",
-        md:   "8px",
-        lg:   "12px",
-        xl:   "16px",
-        "2xl":"20px",
-        full: "9999px",
+        sm: '6px',
+        md: '10px',
+        lg: '14px',
+        xl: '20px',
       },
-
-      // ── Animation ───────────────────────────────────────────
-      transitionDuration: {
-        micro:    "150ms",
-        ui:       "250ms",
-        reveal:   "400ms",
-        page:     "500ms",
-        hero:     "800ms",
+      maxWidth: {
+        container: '1200px',
       },
-      transitionTimingFunction: {
-        "spring":     "cubic-bezier(0.16, 1, 0.3, 1)",
-        "ease-in-expo":"cubic-bezier(0.7, 0, 0.84, 0)",
-        "ease-out-expo":"cubic-bezier(0.16, 1, 0.3, 1)",
+      boxShadow: {
+        glow: '0 0 60px -12px rgb(var(--accent) / 0.45)',
+        card: '0 1px 3px rgb(0 0 0 / 0.06), 0 8px 24px -12px rgb(0 0 0 / 0.12)',
       },
       keyframes: {
-        "fade-up": {
-          "0%":   { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in": {
-          "0%":   { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        "ticker": {
-          "0%":   { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        "pulse-accent": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(200, 240, 75, 0.4)" },
-          "50%":       { boxShadow: "0 0 0 8px rgba(200, 240, 75, 0)" },
-        },
+        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+        marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+        'pulse-soft': { '0%,100%': { opacity: '1' }, '50%': { opacity: '0.5' } },
       },
       animation: {
-        "fade-up":     "fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "fade-in":     "fade-in 0.25s ease-out forwards",
-        "ticker":      "ticker 20s linear infinite",
-        "pulse-accent":"pulse-accent 2s ease-in-out infinite",
-      },
-
-      // ── Container ───────────────────────────────────────────
-      maxWidth: {
-        "container": "1200px",
-        "content":   "760px",
+        'fade-in': 'fade-in 0.5s ease-out both',
+        marquee: 'marquee 28s linear infinite',
+        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
       },
     },
   },
